@@ -7,6 +7,13 @@ var loc=0;
 let root = document.documentElement;
 let ban_url = document.getElementById("ban_src");
 
+if(ban_url){
+    console.log('ok');
+}
+else{
+    console.log('no');
+}
+
 let slider_t = document.getElementById("colorSlider");
 let output_t = document.getElementById("hueValue");
 let r_t = document.querySelector(':root');
