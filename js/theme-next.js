@@ -36,8 +36,10 @@ function save_banner(){
 }
 function load_banner(){
     let t=localStorage.getItem('bannerName');
-    console.log('local value='+loc);
-    root.setAttribute('bannerName',t);
+    console.log('local value='+t);
+    if(t){
+        root.setAttribute('bannerName',t);
+    }
 }
 function set_theme(){
     console.log("photo location: /img/banner/"+arr[loc]+".jpg");
