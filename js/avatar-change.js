@@ -9,7 +9,7 @@ function save_avatar(){
 function load_avatar(){
     var t=localStorage.getItem('avatarName');
     console.log('local value='+t);
-    if(t != 'NaN' && t != 'Null'){
+    if(t != 'NaN' && t != null){
         root.setAttribute('avatarName',t);
     }
 }
