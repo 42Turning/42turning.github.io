@@ -40,6 +40,7 @@ function load_banner(){
     root.setAttribute('bannerName',t);
 }
 function set_theme(){
+    console.log("photo location: /img/banner/"+arr[loc]+".jpg");
     ban_url.src="/img/banner/"+arr[loc]+".jpg";
     setHue(color[loc]);
 }
