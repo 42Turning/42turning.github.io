@@ -37,7 +37,7 @@ function save_banner(){
 function load_banner(){
     let t=localStorage.getItem('bannerName');
     console.log('local value='+t);
-    if(t !=NaN){
+    if(t != 'NaN'){
         root.setAttribute('bannerName',t);
     }
 }
