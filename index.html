@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 
-<html theme="dark" showBanner="true" hasBanner="true" bannerName="0" > 
+<html theme="dark" showBanner="true" hasBanner="true" bannerName="0" avatarName="0" > 
 <link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
 <link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
 <link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
@@ -125,10 +125,11 @@
   
     <div class="widget-wrap">
   <div class="info-card">
-    <div class="avatar">
+    <div id="avatar_id" class="avatar">
       
-        <image src=/img/avatar/avatar_rblue.jpg></image>
+        <image id="avatar_src" src=""></image>
       
+      <!-- src=/img/avatar/avatar_rblue.jpg -->
       <div class="img-dim"></div>
     </div>
     <div class="info">
@@ -329,7 +330,19 @@
 </script>
 
   </div>
+  <script>
+    let root = document.documentElement;
+    let color=['260','250','270','60','360'];
+    function cnt_nxt(value,max){
+        value+=1;
+        if(value>=max){
+            value=0;
+        }
+        return value;
+    }
+  </script>
   <script src="/js/theme-next.js"></script>
+  <script src="/js/avatar-change.js"></script>
   <script src="/js/light-dark-switch.js"></script>
 </body>
 </html>

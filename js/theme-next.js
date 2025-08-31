@@ -1,12 +1,7 @@
-let arr=['banner_rblue','banner_blue','banner_hblue','banner_orange','banner_snow'];
-let color=['260','250','270','60','360'];
-let totel=5;
-
-var loc=0;
-
-let root = document.documentElement;
+let cnt_t=0;
+var arr=['_rblue','_blue','_hblue','_orange','_snow'];
 let ban_url = document.getElementById("ban_src");
-
+let theme_n = document.getElementById("theme-next");
 if(ban_url){
     console.log('ok');
 }
@@ -14,9 +9,7 @@ else{
     console.log('no');
 }
 
-let slider_t = document.getElementById("colorSlider");
-let output_t = document.getElementById("hueValue");
-let r_t = document.querySelector(':root');
+var r_t = document.querySelector(':root');
 function setHue(hue) {
     //console.log(hue+' '+typeof(hue));
     //output_t.innerHTML = hue;
@@ -24,39 +17,33 @@ function setHue(hue) {
     r_t.style.setProperty(`--primary-hue`, hue);
 }
 
-function cnt_nxt(){
-    loc+=1;
-    if(loc>=totel){
-        loc=0;
-    }
-}
 function save_banner(){
-    root.setAttribute('bannerName',loc);
-    localStorage.setItem('bannerName',loc);
+    root.setAttribute('bannerName',cnt_t);
+    localStorage.setItem('bannerName',cnt_t);
 }
 function load_banner(){
-    let t=localStorage.getItem('bannerName');
+    var t=localStorage.getItem('bannerName');
     console.log('local value='+t);
-    if(t != 'NaN'){
+    if(t != 'NaN' && t != 'Null'){
         root.setAttribute('bannerName',t);
     }
 }
 function set_theme(){
-    console.log("photo location: /img/banner/"+arr[loc]+".jpg");
-    ban_url.src="/img/banner/"+arr[loc]+".jpg";
-    setHue(color[loc]);
+    console.log("photo location: /img/banner/banner"+arr[cnt_t]+".jpg");
+    ban_url.src="/img/banner/banner"+arr[cnt_t]+".jpg";
+    setHue(color[cnt_t]);
 }
 
 load_banner();
-loc=parseInt(root.getAttribute('bannerName'));
-console.log(loc);
+cnt_t=parseInt(root.getAttribute('bannerName'));
+console.log(cnt_t);
 set_theme();
 
 let themeN = async function() {
-    var t = document.getElementById("theme-next");
-    t.addEventListener('click', e => {
+    
+    theme_n.addEventListener('click', e => {
         //console.log("here");
-        cnt_nxt();
+        cnt_t=cnt_nxt(cnt_t,5);
         //console.log(loc);
         set_theme();
         save_banner();
