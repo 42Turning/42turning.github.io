@@ -19,8 +19,8 @@ let output_t = document.getElementById("hueValue");
 let r_t = document.querySelector(':root');
 function setHue(hue) {
     //console.log(hue+' '+typeof(hue));
-    output_t.innerHTML = hue;
-    slider_t.value = hue;
+    //output_t.innerHTML = hue;
+    //slider_t.value = hue;
     r_t.style.setProperty(`--primary-hue`, hue);
 }
 
