@@ -9,7 +9,8 @@ function save_avatar(){
 function load_avatar(){
     var t=localStorage.getItem('avatarName');
     console.log('local value='+t);
-    if(t != 'NaN' && t != null){
+    var v=parseInt(t);
+    if(0<=t && t<arr.length){
         root.setAttribute('avatarName',t);
     }
 }
@@ -22,7 +23,7 @@ avatar_src.src="/img/avatar/avatar"+arr[cnt_a]+".jpg";
 
 let avatarC = async function() {
     avatar.addEventListener('click', e => {
-        cnt_a=cnt_nxt(cnt_a,6);
+        cnt_a=cnt_nxt(cnt_a,arr.length);
         //console.log(loc);
         avatar_src.src="/img/avatar/avatar"+arr[cnt_a]+".jpg";
         save_avatar();

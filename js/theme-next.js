@@ -1,5 +1,6 @@
 let cnt_t=0;
 var arr=['_rblue','_blue','_hblue','_orange','_snow'];
+var color=['260','250','270','60','360'];
 let ban_url = document.getElementById("ban_src");
 let theme_n = document.getElementById("theme-next");
 if(ban_url){
@@ -24,7 +25,8 @@ function save_banner(){
 function load_banner(){
     var t=localStorage.getItem('bannerName');
     console.log('local value='+t);
-    if(t != 'NaN' && t != 'Null'){
+    var v=parseInt(t);
+    if(0<=t && t<arr.length){
         root.setAttribute('bannerName',t);
     }
 }
@@ -43,7 +45,7 @@ let themeN = async function() {
     
     theme_n.addEventListener('click', e => {
         //console.log("here");
-        cnt_t=cnt_nxt(cnt_t,5);
+        cnt_t=cnt_nxt(cnt_t,arr.length);
         //console.log(loc);
         set_theme();
         save_banner();
