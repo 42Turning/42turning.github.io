@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            border: 0;
+            height: 100vh;
+            /*vh可以用来铺满全屏 */
+            background: linear-gradient(rgb(17, 33, 58), rgb(44, 76, 127));
+            /* background: linear-gradient(red ,yellow);  */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            text-align: center;
+
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            user-select: none;
+
+            height: 700px;
+            width: 500px;
+        }
+
+        .gmain {
+            width: 500px;
+            height: 550px;
+            background-color: #0a1320;
+        }
+
+        .gcheck {
+            width: 500px;
+            height: 48px;
+        }
+
+        .red_line {
+            width: 500px;
+            height: 2px;
+            background-color: red;
+        }
+
+        .gstay {
+            width: 500px;
+            height: 500px;
+        }
+
+        .gselect {
+            margin-top: 30px;
+
+            display: flex;
+        }
+
+        .gbox {
+            width: 100px;
+            height: 100px;
+            background-color: #0a1320;
+            margin-left: 50px;
+
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .littlebox {
+            width: 9px;
+            height: 9px;
+            margin: 1px;
+            background-color: aqua;
+        }
+
+        .boxposition {
+            position: relative;
+            
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="container">
+        <div class="gmain">
+            <div class="gcheck">
+                <div class="littlebox boxposition"></div>
+            </div><!-- 解决塌陷问题 -->
+            <div class="red_line"></div>
+            <div class="gstay" id="gm">
+                <div class="littlebox boxposition" id="lbox"></div>
+            </div>
+        </div>
+        <div class="gselect">
+            <div class="gbox"></div>
+            <div class="gbox"></div>
+            <div class="gbox"></div>
+        </div>
+    </div>
+    <script>
+        let w=1;
+        console.log("1");
+        console.log("1");
+    </script>
+    <!-- <script>
+        let gm = document.getElementById("gm");
+        let x=0,y=0;
+        let isdown=false;
+        let t = document.getElementById("lbox");
+        gm.addEventListener("click", e => {
+            x+=10;
+            y+=10;
+            t.style.top = x + 'px';
+            t.style.left = y + 'px';
+            console.log(t.style.top, t.style.left);
+            t.style.backgroundColor = "red";    
+        })
+        t.addEventListener("mousedown",e=>{
+            isdown= true;
+            console.log("ok");
+        })
+        document.addEventListener('mousemove',e=>{
+            if(isdown){
+                t.style.left= event.clientX-gm.style.left+"px";
+                t.style.top= event.clientY-gm.style.top+"px";
+                console.log("ok1");
+            }
+        })
+        t.addEventListener('mouseup',e=>{
+            isdown=false;
+            console.log("ok2");
+        })
+    </script> -->
+</body>
+
+</html>
