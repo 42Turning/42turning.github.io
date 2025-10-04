@@ -24,6 +24,7 @@
 
             background: rgba(255, 255, 255, 0.95);
             padding: 10px;
+            padding-top: 5px;
             border-radius: 6px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             user-select: none;
@@ -34,7 +35,8 @@
 
         .gmain {
             width: 300px;
-            height: 350px;
+            height: 380px;
+            border-radius: 2px;
             background-color: #0a1320;
         }
 
@@ -51,11 +53,11 @@
 
         .gstay {
             width: 300px;
-            height: 300px;
+            height: 330px;
         }
 
         .gselect {
-            margin-top: 30px;
+            margin-top: 20px;
 
             display: flex;
         }
@@ -71,15 +73,15 @@
         }
 
         .littlebox {
-            width: 9px;
-            height: 9px;
+            width: 5px;
+            height: 5px;
             margin: 1px;
             background-color: aqua;
-        }
-
-        .boxposition {
             position: relative;
-            
+        }
+        #score{
+            font-size: small;
+            padding-bottom: 5px;
         }
     </style>
 </head>
@@ -87,13 +89,13 @@
 <body>
     
     <div class="container">
+        <div id="score">得分:0分&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最高分:0分</div>
         <div class="gmain">
             <div class="gcheck">
-                <div class="littlebox boxposition"></div>
             </div><!-- 解决塌陷问题 -->
             <div class="red_line"></div>
             <div class="gstay" id="gm">
-                <div class="littlebox boxposition" id="lbox"></div>
+                <div class="littlebox" id="lbox"></div>
             </div>
         </div>
         <div class="gselect">
@@ -103,39 +105,59 @@
         </div>
     </div>
     <script>
-        let 
-        console.log("1");
-        console.log("1");
-    </script>
-    <!-- <script>
         let gm = document.getElementById("gm");
         let x=0,y=0;
         let isdown=false;
+        let loc=gm.getBoundingClientRect();
         let t = document.getElementById("lbox");
-        gm.addEventListener("click", e => {
-            x+=10;
-            y+=10;
-            t.style.top = x + 'px';
-            t.style.left = y + 'px';
-            console.log(t.style.top, t.style.left);
-            t.style.backgroundColor = "red";    
-        })
+        console.log(gm.getBoundingClientRect().left,gm.getBoundingClientRect().top);
+        if(gm){
+            console.log('yse')
+        }
+        // gm.addEventListener("click", e => {
+        //     x+=10;
+        //     y+=10;
+        //     t.style.top = x + 'px';
+        //     t.style.left = y + 'px';
+        //     console.log(t.style.top, t.style.left);
+        //     t.style.backgroundColor = "red";    
+        // });
         t.addEventListener("mousedown",e=>{
             isdown= true;
-            console.log("ok");
-        })
+            x=t.style.left;
+            y=t.style.top;
+        });
         document.addEventListener('mousemove',e=>{
             if(isdown){
-                t.style.left= event.clientX-gm.style.left+"px";
-                t.style.top= event.clientY-gm.style.top+"px";
-                console.log("ok1");
+                let tx=event.clientX,ty=event.clientY;
+                tx=(loc.left+3<=tx)?tx:loc.left+3;
+                tx=(tx<=loc.left+loc.width-3)?tx:loc.left+loc.width-3;
+                ty=(loc.top+3<=ty)?ty:loc.top+3;
+                ty=(ty<=loc.top+loc.height-3)?ty:loc.top+loc.height-3;
+                
+                t.style.top=ty-loc.top-3+'px';
+                t.style.left=tx-loc.left-3+'px';
             }
-        })
+        });
+        function culoc(){
+            let ty=Math.round(t.style.top.slice(0,t.style.top.length-2));
+            let tx=Math.round(t.style.left.slice(0,t.style.left.length-2));
+            console.log(tx,Math.floor(tx/6)*6);
+            console.log(ty,Math.floor(ty/6)*6);
+            t.style.left=Math.floor(tx/6)*6+'px';
+            t.style.top=Math.floor(ty/6)*6+'px';
+        }
         t.addEventListener('mouseup',e=>{
             isdown=false;
-            console.log("ok2");
-        })
-    </script> -->
+            culoc();
+        });
+        document.addEventListener('mouseup',e=>{
+            if(isdown){
+                isdown=false;
+                culoc();
+            }
+        });
+    </script>
 </body>
 
 </html>
